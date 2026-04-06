@@ -5,9 +5,10 @@ window.colors = {
   text: window.getComputedStyle(document.documentElement).getPropertyValue('--color-text'),
   primary: window.getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
   secondary: window.getComputedStyle(document.documentElement).getPropertyValue('--color-secondary'),
+  headerBackground: window.getComputedStyle(document.querySelector('header')).getPropertyValue('--color-background'),
 }
 
-const markdownBody = document.querySelector('.markdown-body')
+const app = document.querySelector('#app')
 const header = document.querySelector('header')
 const debugInfo = document.querySelector('.debug-info')
 const lightbox = document.querySelector('#lightbox')
@@ -16,15 +17,15 @@ lightbox.querySelector('p').appendChild(lightboxImg);
 const images = []
 
 const renderMarkdown = text => {
-  markdownBody.innerHTML = marked.parse(text, { gfm: true, /* breaks: true */ })
-  markdownBody.querySelectorAll('img:not(.lightbox-ignore)').forEach(img => {
+  app.innerHTML = marked.parse(text, { gfm: true, /* breaks: true */ })
+  app.querySelectorAll('img:not(.lightbox-ignore)').forEach(img => {
 		images.push(img.src)
 		img.addEventListener('click', toggleLightbox)
   })
 }
 
 if (location.search?.slice(1) === 'space') {
-  markdownBody.remove()
+  app.remove()
 } else if (location.search) {
   const pagefile = '/pages/' + (location.search.slice(1) || 'home') + '.md' 
   const xhr = new XMLHttpRequest()
@@ -33,7 +34,7 @@ if (location.search?.slice(1) === 'space') {
   xhr.send()
 } else {
   const embeddedMarkdown = document.querySelector('script[type="text/markdown"]')
-  if (embeddedMarkdown) renderMarkdown(embeddedMarkdown.innerHTML)
+  renderMarkdown(embeddedMarkdown.innerHTML)
 }
 
 function toggleLightbox(...args) {
@@ -126,6 +127,10 @@ const beginBgAnimation = (ctx, canv) => {
 
     ctx.clearRect(0, 0, cScale(canv.width), cScale(canv.height))
     ctx.lineWidth = lineWidth
+
+    const darkLineHeight = header.getBoundingClientRect().bottom
+    ctx.fillStyle = colors.headerBackground
+    ctx.fillRect(0, 0, cScale(canv.width), darkLineHeight)
 
     points.forEach(p => {
       if (p.connectedPoints) {
