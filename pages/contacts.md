@@ -4,4 +4,4 @@
 ИНН  745604833520  
 г. Магнитогорск  
 +7 (906) 898-50-49  
-romanovskii.leonid@gmail.com
+info@romkib.com
