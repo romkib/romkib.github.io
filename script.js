@@ -256,3 +256,60 @@ const beginBgAnimation = (ctx, canv) => {
 }
 
 beginBgAnimation(bgContext, bgCanvas)
+
+
+
+///////////// SVG animations ///////////////////////////////////////////////////
+
+const svgImgs = document.querySelectorAll('img.svg-animation')
+
+const calculateDurationSetDataDur = svg => {
+  let maxDur = 0
+  svg.querySelectorAll('animate').forEach(anim => {
+    const dur = +anim.getAttribute('dur')
+    if (dur > maxDur)
+      maxDur = dur
+  })
+  svg.dataset.dur = maxDur
+}
+
+const svgs = [...document.querySelectorAll('svg.svg-animation')]
+svgs.forEach(svg => svg.pauseAnimations())
+svgs.forEach(svg => svg.setCurrentTime(0))
+svgs.forEach(svg => calculateDurationSetDataDur(svg))
+
+let svgDivFather = document.createElement('div')
+
+svgImgs.forEach(img => {
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', img.src)
+  xhr.onload = () => {
+    svgDivFather.innerHTML = xhr.response
+    const svg = svgDivFather.firstChild
+    svg.pauseAnimations()
+    svg.setCurrentTime(0)
+    calculateDurationSetDataDur(svg)
+    svg.setAttribute('class', img.getAttribute('class'))
+    svg.setAttribute('style', img.getAttribute('style'))
+    img.replaceWith(svg)
+    svgs.push(svg)
+  }
+  xhr.send()
+})
+
+window.addEventListener('scroll', () => {
+  svgs.forEach(svg => {
+    const rect = svg.getBoundingClientRect()
+    const amination0 = window.innerHeight / 4 * 3
+    const amination1 = window.innerHeight / 4
+    const animationD = amination0 - amination1
+    const animationO = amination0 - rect.top
+    const animationP = animationO / animationD
+    // Our animation logic, start the animation when the svg fully appeared,     
+    // and end the animation when the svg reach the top of the window    
+    const progress = Math.max(0, Math.min(1, animationP))
+  
+    // Set animation time based on progress
+    svg.setCurrentTime(progress * svg.dataset.dur)
+  })
+})

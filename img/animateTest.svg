@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" data-app="Xyris">
+    <defs>
+    </defs>
+    <ellipse fill="#DCDCAA55" stroke="#000000" stroke-width="0" cx="445.702" cy="63.8948" rx="39.5" ry="39.5" transform="">
+        <animate attributeName="cx" keyTimes="0; 1.0" values="445.702; 445.702" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+        <animate attributeName="cy" keyTimes="0; 1.0" values="63.8948; 446.202" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+    </ellipse>
+    <ellipse fill="#CE917855" stroke="#000000" stroke-width="0" cx="445.702" cy="446.202" rx="39.5" ry="39.5" transform="">
+        <animate attributeName="cx" keyTimes="0; 1.0" values="445.702; 64.437" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+        <animate attributeName="cy" keyTimes="0; 1.0" values="446.202; 446.202" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+    </ellipse>
+    <ellipse fill="#CE917855" stroke="#000000" stroke-width="0" cx="64.4369" cy="63.8948" rx="39.5" ry="39.5" transform="">
+        <animate attributeName="cx" keyTimes="0; 1.0" values="64.4369; 445.701" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+        <animate attributeName="cy" keyTimes="0; 1.0" values="63.8948; 63.9325" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+    </ellipse>
+    <ellipse fill="#DCDCAA55" stroke="#000000" stroke-width="0" cx="64.4369" cy="446.202" rx="39.5" ry="39.5" transform="">
+        <animate attributeName="cx" keyTimes="0; 1.0" values="64.4369; 64.4369" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+        <animate attributeName="cy" keyTimes="0; 1.0" values="446.202; 63.8949" begin="-0.00001" dur="11" fill="freeze" calcMode="spline" keySplines="0 0 1 1">
+        </animate>
+    </ellipse>
+    <polygon fill="#ffffff55" stroke="#000000" stroke-width="0" transform-origin="center" points="256,122.81312561035156 276.4700927734375,208.99961853027344 355.0239562988281,161.8226318359375 305.41912841796875,236.5317840576172 396.0409851074219,256 305.41912841796875,275.46820068359375 355.0239562988281,350.17730712890625 276.4700927734375,303.0003967285156 256,389.1868591308594 235.52992248535156,303.0003967285156 156.97607421875,350.17730712890625 206.5808563232422,275.46820068359375 115.95899963378906,256 206.5808563232422,236.5317840576172 156.97607421875,161.8226318359375 235.52992248535156,208.99961853027344" style="transform-box: fill-box;" transform="matrix(-1,0,0,-1,0,0)">
+        <animateTransform attributeName="transform" type="rotate" begin="-0.00001" dur="11" keyTimes="0; 1.0" values="0; -90" fill="freeze" additive="sum" calcMode="spline" keySplines="0 0 1 1">
+        </animateTransform>
+    </polygon>
+</svg>
