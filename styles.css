@@ -31,7 +31,7 @@ input, button, textarea, select, .button {
 
 .theme-iskra {
   --color-background: #1f1f1f;
-  --color-text: #ffffff;
+  --color-text: #fffffff0;
   --color-primary: #DCDCAA;
   --color-secondary: #CE9178;
 }
@@ -217,6 +217,34 @@ main {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.container pre {
+  background: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.container table tr {
+  background: none;
+  border: none;
+}
+
+.container table thead tr {
+  background: color-mix(in srgb, var(--color-secondary) 10%, transparent);
+}
+
+.container table tbody tr:nth-child(2n) {
+  background: color-mix(in srgb, var(--color-secondary) 5%, transparent);
+}
+
+.container table tbody tr:hover {
+  background: color-mix(in srgb, var(--color-secondary) 15%, transparent);
+}
+
+.container table tr td,
+.container table tr th {
+  border: none;
 }
 
 .container {

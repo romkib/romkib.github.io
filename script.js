@@ -33,7 +33,7 @@ if (location.search?.slice(1) === 'space') {
   xhr.onload = () => renderMarkdown(xhr.response)
   xhr.send()
 } else {
-  const embeddedMarkdown = document.querySelector('script[type="text/markdown"]')
+  const embeddedMarkdown = document.querySelector('[data-type="text/markdown"]')
   renderMarkdown(embeddedMarkdown.innerHTML)
 }
 
@@ -102,13 +102,55 @@ const beginBgAnimation = (ctx, canv) => {
     connectedPoints: i % 3 === 0 ? [] : undefined,
     i: i,
   })), mouse]
-  let points
+
+  const repopulatePoints = (points, resizeWScale, resizeHScale) => {
+    const newLength = Math.max(Math.ceil(cScale(wWidth()) * cScale(wHeight()) / 9000), 10)
+    let newPoints = []
+
+    points.forEach(p => {
+      if (p.x < 0) {
+        return
+      } else if (p.x > cScale(canv.width)) {
+        return
+      }
+      if (p.y < cScale(0)) {
+        return
+      } else if (p.y > cScale(canv.height)) {
+        return
+      }
+      if (p.mouse)
+        return
+      newPoints.push({...p, i: newPoints.length, x: p.x * resizeWScale, y: p.y * resizeHScale })
+    })
+
+    if (newPoints.length > newLength) {
+      newPoints = newPoints.slice(0, newLength)
+    }
+
+    for (let i = newPoints.length; i < newLength; i++) {
+      newPoints.push({
+        x: Math.random() * cScale(canv.width),
+        y: Math.random() * cScale(canv.height),
+        dx: (Math.random() * 0.5 + 0.05) * (Math.random() > 0.5 ? 1 : -1) * 0.3,
+        dy: (Math.random() * 0.5 + 0.05) * (Math.random() > 0.5 ? 1 : -1) * 0.3,
+        connectedPoints: i % 3 === 0 ? [] : undefined,
+        i: i,
+      })
+    }
+
+
+    return [...newPoints, mouse]
+  }
+
+  let points = []
 
   const onWindowResize = () => {
+    const resizeWScale = wWidth() / canv.width
+    const resizeHScale = wHeight() / canv.height
     canv.width = wWidth()
     canv.height = wHeight()
     ctx.scale(wScale(), wScale())
-    points = populatePoints()
+    points = repopulatePoints(points, resizeWScale, resizeHScale)
   }
 
   window.addEventListener('resize', onWindowResize, true)
