@@ -24,8 +24,46 @@ const renderMarkdown = text => {
   })
 }
 
+const renderMarkdownClean = pagefile => text => {
+  const folderPath = pagefile.substring(0, pagefile.lastIndexOf('/'))
+  app.innerHTML = marked.parse(text, { gfm: true, /* breaks: true */ })
+  app.style.margin = '0 auto'
+  app.style.maxWidth = '960px'
+  app.querySelectorAll('img[src]').forEach(img => {
+    const src = img.getAttribute('src')
+    if (!src.startsWith('/')) {
+      img.src = folderPath + '/' + src
+    }
+  })
+  app.querySelectorAll('a[href]').forEach(a => {
+    let href = a.getAttribute('href')
+    if (!href.startsWith('/') && !href.startsWith('#')) {
+      a.href = folderPath + '/' + href
+    }
+    href = a.getAttribute('href')
+    if (href.endsWith('.md') && href.startsWith('/pages/')) {
+      a.href = '/?clean&page=' + href.substring(7)
+    }
+  })
+  document.querySelector('canvas').remove()
+  document.querySelector('header').remove()
+  document.querySelector('footer').remove()
+  document.querySelector('link[href="styles.css"]').remove()
+  document.body.innerHTML = app.outerHTML
+}
+
+const searchParams = new URLSearchParams(location.search)
+
 if (location.search?.slice(1) === 'space') {
   app.remove()
+} else if (searchParams.has('page')) {
+  const page = searchParams.get('page')
+  const clean = searchParams.has('clean')
+  const pagefile = '/pages/' + (page.endsWith('.md') ? page : page + '.md')
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', pagefile)
+  xhr.onload = () => (clean ? renderMarkdownClean(pagefile) : renderMarkdown)(xhr.response)
+  xhr.send()
 } else if (location.search) {
   const pagefile = '/pages/' + (location.search.slice(1) || 'home') + '.md' 
   const xhr = new XMLHttpRequest()
