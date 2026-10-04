@@ -1,0 +1,22 @@
+Privacy Policy
+Last Updated: October 4, 2026
+Sole proprietor Romanovskii Leonid built the ADHDAssistant app as a Free Open Source service. This service is provided by sole proprietor Leonid Romanovskii at no cost and is intended for use as is.
+This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decides to use our Service.
+1. Information Collection and Use
+We believe in complete privacy. ADHDAssistant does not collect, log, transmit, or store any personal data or user information.
+• No Personal Data: The application does not require registration, and we do not request, collect, or store names, email addresses, phone numbers, or any other identifying information.
+• No Device or Usage Data: The application does not track device IDs, IP addresses, crashes, or analytics.
+• No Location Data: The application does not access or track your device's precise location.
+Because the app operates strictly offline or performs processing exclusively on your local device, no data ever leaves your device.
+2. Third-Party Services
+We do not use any third-party SDKs, libraries, advertising networks, or analytics tools that collect, track, or monitor your information.
+3. Data Retention and Deletion
+Since we do not collect or store any information, we do not retain any data. There is no data to delete or manage. Uninstalling the application simply removes all application files from your device.
+4. Children’s Privacy
+Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. Since our application does not collect any data from any user, it is fully compliant with children's privacy regulations, including COPPA and GDPR.
+5. Changes to This Privacy Policy
+We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+6. Contact Us
+If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at:
+• Email: info@romkib.com
+• Website: romkib.com
